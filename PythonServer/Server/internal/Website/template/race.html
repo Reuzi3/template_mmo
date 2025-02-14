@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dados da Classe</title>
+    <link rel="stylesheet" type="text/css" href="/static/race.css">
+</head>
+<body>
+    <h1>Dados da Classe</h1>
+    <table>
+        <tr>
+            <th>Atributo</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td>Race</td>
+            <td id="race"></td>
+        </tr>
+        <tr>
+            <td>Pontos de Vida (HP)</td>
+            <td id="hp"></td>
+        </tr>
+        <tr>
+            <td>Pontos de Energia (SP)</td>
+            <td id="sp"></td>
+        </tr>
+        <tr>
+            <td>Ataque (ATT)</td>
+            <td id="att"></td>
+        </tr>
+        <tr>
+            <td>Magica (MAG)</td>
+            <td id="mag"></td>
+        </tr>
+        <tr>
+            <td>Habilidade (SKL)</td>
+            <td id="skl"></td>
+        </tr>
+        <tr>
+            <td>Velocidade (SPD)</td>
+            <td id="spd"></td>
+        </tr>
+        <tr>
+            <td>Sorte (LCK)</td>
+            <td id="lck"></td>
+        </tr>
+        <tr>
+            <td>Defesa (DEF)</td>
+            <td id="def"></td>
+        </tr>
+        <tr>
+            <td>Resistencia (RES)</td>
+            <td id="res"></td>
+        </tr>
+        <tr>
+            <td>Countdown</td>
+            <td id="countdown"></td>
+        </tr>
+    </table>
+    <script>
+        const currentURL = window.location.href;
+
+        // Extrair o nome da raça da URL
+        const raceName = currentURL.split('/').pop();
+        // Receber os dados do servidor
+        fetch('/get_state/'+raceName)
+            .then(response => response.json())
+            .then(data => {
+                // Mapear os valores para os elementos HTML correspondentes
+                console.log(data[0]);
+                document.getElementById('race').textContent = data.raceState[0];
+                document.getElementById('hp').textContent = data.raceState[1];
+                document.getElementById('sp').textContent = data.raceState[2];
+                document.getElementById('att').textContent = data.raceState[3];
+                document.getElementById('mag').textContent = data.raceState[4];
+                document.getElementById('skl').textContent = data.raceState[5];
+                document.getElementById('spd').textContent = data.raceState[6];
+                document.getElementById('lck').textContent = data.raceState[7];
+                document.getElementById('def').textContent = data.raceState[8];
+                document.getElementById('res').textContent = data.raceState[9];
+                document.getElementById('countdown').textContent = data.raceState[10];
+            });
+    </script>
+</body>
+</html>

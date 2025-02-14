@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://djrm2birw2ch0"]
+
+[ext_resource type="Script" path="res://src/Scripts/Entitys/Peer/peer.gd" id="1_gmpbj"]
+[ext_resource type="PackedScene" uid="uid://dlu1q6cexru5i" path="res://src/scenes/Entitys/Visual.tscn" id="2_enmq3"]
+
+[node name="Peer" type="Node2D" node_paths=PackedStringArray("anim")]
+script = ExtResource("1_gmpbj")
+anim = NodePath("Flip/Visual/AnimationTree")
+
+[node name="Flip" parent="." instance=ExtResource("2_enmq3")]
+scale = Vector2(1, 1)
+
+[node name="UiActive" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -21.0
+offset_top = -215.0
+offset_right = 28.0
+offset_bottom = -24.0
+mouse_filter = 1
+button_mask = 3
+flat = true
+
+[connection signal="mouse_entered" from="UiActive" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UiActive" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="UiActive" to="." method="_on_ui_active_pressed"]
+
+[editable path="Flip"]

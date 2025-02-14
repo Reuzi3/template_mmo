@@ -1,0 +1,570 @@
+[gd_scene load_steps=35 format=3 uid="uid://dlu1q6cexru5i"]
+
+[ext_resource type="Texture2D" uid="uid://bha507tc5ekw8" path="res://src/Assets/Player/PernaD/PernaD.png" id="1_2k17i"]
+[ext_resource type="Texture2D" uid="uid://d1fjt4cmsva3s" path="res://src/Assets/Player/PeD/PeD.png" id="2_babcc"]
+[ext_resource type="Texture2D" uid="uid://b8bn7p584454l" path="res://src/Assets/Player/MaoD/MaoD.png" id="3_jnbcr"]
+[ext_resource type="Texture2D" uid="uid://bwjam7uiatpl" path="res://src/Assets/Player/OmbroD/OmbroD.png" id="4_d3pce"]
+[ext_resource type="Texture2D" uid="uid://kw4xnwbncvo2" path="res://src/Assets/Player/AntebracoD/AntebracoD.png" id="5_6g3yr"]
+[ext_resource type="Texture2D" uid="uid://dtgjpnpvu6suf" path="res://src/Assets/Player/CoxaD/CoxaD.png" id="6_a4vl4"]
+[ext_resource type="Texture2D" uid="uid://dyqlkxxon6agy" path="res://src/Assets/Player/PernaE/PernaE.png" id="7_m7404"]
+[ext_resource type="Texture2D" uid="uid://cqtysqwbwlt7n" path="res://src/Assets/Player/PeE/PeE.png" id="8_wldq0"]
+[ext_resource type="Texture2D" uid="uid://jto1u2pg4iej" path="res://src/Assets/Player/CoxaE/CoxaE.png" id="9_l2t5c"]
+[ext_resource type="Texture2D" uid="uid://dt3bjvvdg1lwg" path="res://src/Assets/Player/Tronco/TroncoMasculino.png" id="10_hrxbw"]
+[ext_resource type="Texture2D" uid="uid://d4ch8mhddews3" path="res://src/Assets/Player/Pele/Cabeca.png" id="11_dv7lt"]
+[ext_resource type="Texture2D" uid="uid://c0ashjvq1yv4v" path="res://src/Assets/Player/Faces/1.png" id="12_85fag"]
+[ext_resource type="Texture2D" uid="uid://cslppj2lrwgxo" path="res://src/Assets/Player/Hair/178.png" id="13_q3ul6"]
+[ext_resource type="Texture2D" uid="uid://dnsdd3iaix33a" path="res://src/Assets/Player/Hat/178.png" id="14_i417t"]
+[ext_resource type="Texture2D" uid="uid://c780j17gcfbxp" path="res://src/Assets/Player/OmbroE/OmbroE.png" id="15_vlla2"]
+[ext_resource type="Texture2D" uid="uid://b3rbcb60s88rv" path="res://src/Assets/Player/MaoE/MaoE.png" id="16_kg70p"]
+[ext_resource type="Texture2D" uid="uid://cv1w60dom41nv" path="res://src/Assets/Weapons/6.png" id="17_vfljh"]
+[ext_resource type="Texture2D" uid="uid://dgx1msv1xd3cj" path="res://src/Assets/Player/PivotMaoE/MaoEp.png" id="18_yes0r"]
+[ext_resource type="Texture2D" uid="uid://b5g4f3nq6in21" path="res://src/Assets/Player/AntebracoE/AntebracoE.png" id="19_qt5uj"]
+[ext_resource type="Animation" uid="uid://dh2wv42tvutdn" path="res://src/Assets/MenuTextures/Animstars/PreWalk.res" id="20_2abro"]
+[ext_resource type="Animation" uid="uid://dsuuy6ryhsyuc" path="res://src/Assets/MenuTextures/Animstars/Walk.res" id="20_ny1qg"]
+[ext_resource type="Animation" uid="uid://cypbpew8av0bp" path="res://src/Assets/MenuTextures/Animstars/Idle.res" id="22_u8bbu"]
+
+[sub_resource type="GDScript" id="GDScript_nxa7u"]
+script/source = "@tool
+extends Node2D
+
+@export var Body : Color = Color(1, 1, 1, 1): 
+	set(value):
+		Body=value
+		set_BodyColor(value)
+@export var Hair : Color = Color(1, 1, 1, 1): 
+	set(value):
+		Hair=value
+		set_HairColor(value)
+@export var Hat : Color = Color(1, 1, 1, 1): 
+	set(value):
+		Hat=value
+		set_HatColor(value)
+@export var skin : Color = Color(1, 1, 1, 1): 
+	set(value):
+		skin=value
+		set_skinColor(value)
+
+
+#Todo Remover tudo depois
+@export var id_armadura = -1: 
+	set(value): 
+		id_armadura=value
+		set_id_armadura(value)
+@export var id_arma = -1: 
+	set(value):
+		id_arma=value 
+		set_id_arma(value)
+@export var id_capacete = -1: 
+	set(value):
+		id_capacete=value
+		set_id_capacete(value)
+@export var id_face = -1: 
+	set(value):
+		id_face=value 
+		set_id_face(value)
+var partes_armadura : Array
+var partes_capacete : Array
+var arma : Sprite2D
+var face : Sprite2D
+var armadura_cor : Array
+var cabelo_cor : Array
+var chapeu_cor : Array
+var pele_cor : Array
+
+var pronto = false
+
+func _ready():
+	armadura_cor = [$AntebracoE/PivotAntebracoE/ForearmECor, $OmbroE/PivotOmbroE/ShoulderECor, $MaoE/PivotMaoE/HandECor, $Armor/Tronco/PivotArmadura/ArmaduraCor, $Armor/AntebracoD/PivotAntebracoD/ForearmDCor, $Armor/OmbroD/PivotOmbroD/ShoulderDCor, $Armor/MaoD/PivotMaoD/HandDCor, $Armor/CoxaE/PivotCoxaE/ThighECor, $Armor/PeE/PivotPeE/FootECor, $Armor/PernaE/PivotPernaE/LegECor, $Armor/CoxaD/PivotCoxaD/ThighDCor, $Armor/PeD/PivotPeD/FootDCor, $Armor/PernaD/PivotPernaD/LegDCor, $Armor/Capa/PivotCapa/CapCor]
+	cabelo_cor = [$Cabeca/PivotCabelo/Hair, $Rabo/PivotRabo/RabCor]
+	chapeu_cor = [$Cabeca/PivotChapeu/HatCor]
+	pele_cor = [$MaoE/PivotMaoE, $MaoE, $Armor/PernaD, $Armor/PeD, $Armor/CoxaD, $Armor/PernaE, $Armor/PeE, $Armor/CoxaE, $Armor/MaoD, $Armor/OmbroD, $Armor/AntebracoD, $Armor/Tronco, $MaoE, $OmbroE, $AntebracoE, $Cabeca]
+	partes_armadura = [$Armor/Tronco/cachecol, $Armor/Tronco, $Armor/PernaD/PivotPernaD/LegDCor, $Armor/PeD/PivotPeD/FootDCor, $Armor/CoxaD/PivotCoxaD/ThighDCor, $Armor/PernaE/PivotPernaE/LegE, $Armor/PeE/PivotPeE/FootECor, $Armor/CoxaE/PivotCoxaE/ThighECor, $Armor/MaoD/PivotMaoD/HandDCor, $Armor/OmbroD/PivotOmbroD/ShoulderDCor, $Armor/AntebracoD/PivotAntebracoD/ForearmDCor, $Armor/Tronco/PivotArmadura/Armadura, $MaoE/PivotMaoE/HandECor, $OmbroE/PivotOmbroE/ShoulderECor, $AntebracoE/PivotAntebracoE/ForearmE, $AntebracoE/PivotAntebracoE/ForearmECor, $Armor/PernaD/PivotPernaD/LegD, $Armor/PeD/PivotPeD/FootD, $Armor/CoxaD/PivotCoxaD/ThighD, $Armor/PernaE/PivotPernaE/LegECor, $Armor/PeE/PivotPeE/FootE, $Armor/CoxaE/PivotCoxaE/ThighE, $Armor/MaoD/PivotMaoD/HandD, $Armor/OmbroD/PivotOmbroD/ShoulderD, $Armor/AntebracoD/PivotAntebracoD/ForearmD, $Armor/Tronco/PivotArmadura/ArmaduraCor, $MaoE/PivotMaoE/HandE, $OmbroE/PivotOmbroE/ShoulderE, $Armor/Capa/PivotCapa/Cap, $Armor/Capa/PivotCapa/CapCor,]
+	arma = $MaoE/PivotArma/arma
+	face = $Cabeca/PivotFace/face
+	partes_capacete = [$Rabo/PivotRabo/Rab, $Rabo/PivotRabo/RabCor, $Cabeca/PivotCabelo/Hair, $Cabeca/PivotChapeu/Hat, $Cabeca/PivotChapeu/HatCor]
+	set_id_armadura(id_armadura)
+	set_id_arma(id_arma)
+	set_id_capacete(id_capacete)
+	set_id_face(id_face)
+	pronto = true
+
+func _update_armadura_cor():
+	for p in armadura_cor:
+		p.modulate = Body
+
+func _update_cabelo_cor():
+	for p in cabelo_cor:
+		p.modulate = Hair
+		
+
+func _update_pele_cor():
+	for p in pele_cor:
+		p.self_modulate = skin
+
+func set_skinColor(new_color):
+	_update_pele_cor()
+
+func set_BodyColor(new_color):
+	_update_armadura_cor()
+
+func set_HairColor(new_color):
+	_update_cabelo_cor()
+	
+
+func _update_chapeu_cor():
+	for p in chapeu_cor:
+		p.modulate = Hat
+
+func set_HatColor(new_color):
+	_update_chapeu_cor()
+
+
+
+func pegar_filhos(no_inicial:Node, filhos_encontrados:Array, nomes_excluir:Array):
+	if !(no_inicial.name in nomes_excluir):
+		filhos_encontrados.append(no_inicial)	
+		var filhos_no_inic = no_inicial.get_children()
+		if filhos_no_inic.size() > 0:
+			for f in filhos_no_inic:
+				pegar_filhos(f, filhos_encontrados, nomes_excluir)
+
+func carregar_e_colocar(valor, caminho_res, nodes, tipo_item):
+	var tipos = [\"id_capacetes\", \"Armaduras\", \"face\"]
+	if ResourceLoader.exists(caminho_res):
+		var res_equip = ResourceLoader.load(caminho_res)
+		if res_equip.texturas.size() == 0:
+			print(\"Texturas ainda não foram postas em \" + caminho_res)
+			return
+		
+		for i in nodes.size():
+			var p = nodes[i]
+			
+			if res_equip.z_indexes.size() > 0:
+				p.z_index = res_equip.z_indexes[i]
+			
+			if res_equip.texturas[i]:
+				var caminho_textura = \"res://src/Assets/Player/\" + p.name + \"/\" + res_equip.texturas[i] + \".png\"
+				
+				if ResourceLoader.exists(caminho_textura):
+					p.texture = load(caminho_textura)
+					
+				else:
+					print(caminho_textura, \" não encontrado! \")
+					p.texture = null
+			else:
+				p.texture = null
+
+func set_id_armadura(valor):
+	if pronto && is_inside_tree():
+		var caminho_res = \"res://src/dadosRes/ArmaduraRes/\" + str(valor) + \".res\"
+		carregar_e_colocar(valor, caminho_res, partes_armadura, 1)
+
+func set_id_capacete(valor):
+	if pronto && is_inside_tree():
+		var caminho_res = \"res://src/dadosRes/CapaceteRes/\" + str(valor) + \".res\"
+		carregar_e_colocar(valor, caminho_res, partes_capacete, 1)
+
+func set_id_face(valor):
+	if pronto && is_inside_tree():
+		var caminho_res = \"res://src/dadosRes/FaceRes/\" + str(valor) + \".res\"
+		if ResourceLoader.exists(caminho_res):
+			var res_equip = ResourceLoader.load(\"res://src/dadosRes/FaceRes/\" + str(valor) + \".res\")
+			
+			if res_equip.textura:
+				var caminho_textura = \"res://src/Assets/Player/Faces/\" + res_equip.textura + \".png\"
+				if ResourceLoader.exists(caminho_textura):
+					face.texture = load(caminho_textura)
+					face.z_index = res_equip.z_index
+					face.transform = res_equip.transform
+					face.offset = res_equip.offset
+				else:
+					print(caminho_textura, \" não encontrado!\")
+					face.texture = null
+			else:
+				face.texture = null
+		else:
+			print(caminho_res, \" não encontrado!\")
+
+func set_id_arma(valor):
+	if pronto && is_inside_tree():
+		var caminho_res = \"res://src/dadosRes/ArmaRes/\" + str(valor) + \".res\"
+		if ResourceLoader.exists(caminho_res):
+			var res_equip = ResourceLoader.load(\"res://src/dadosRes/ArmaRes/\" + str(valor) + \".res\")
+			
+			if res_equip.textura:
+				var caminho_textura = \"res://src/Assets/Weapons/\" + res_equip.textura + \".png\"
+				
+				if ResourceLoader.exists(caminho_textura):
+					arma.texture = load(caminho_textura)
+					arma.z_index = res_equip.z_index
+					arma.transform = res_equip.transform
+					arma.offset = res_equip.offset
+				else:
+					print(caminho_textura, \" não encontrado!\")
+					arma.texture = null
+			else:
+				arma.texture = null
+		else:
+			print(caminho_res, \" não encontrado!\")
+"
+
+[sub_resource type="Animation" id="1"]
+resource_name = "Ataque1"
+
+[sub_resource type="Animation" id="Animation_fp3uh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base/Rabo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(101.684, -139.931)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base/Rabo:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Base/Cabeca:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(45.9662, -165.801)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Base/Cabeca:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0139626]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ffihl"]
+_data = {
+"Ataque1": SubResource("1"),
+"PreWalk": ExtResource("20_2abro"),
+"RESET": SubResource("Animation_fp3uh"),
+"Walk": ExtResource("20_ny1qg"),
+"idle": ExtResource("22_u8bbu")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y32vo"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y6uk4"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lun47"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_r2v78"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_y6uk4")
+nodes/Animation/position = Vector2(300, 60)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_lun47")
+nodes/TimeScale/position = Vector2(480, 40)
+nodes/output/position = Vector2(660, 80)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d85vr"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ri70u"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5awqj"]
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachine" id="19"]
+states/Idle/node = SubResource("AnimationNodeAnimation_y32vo")
+states/Idle/position = Vector2(153, -260.421)
+states/Start/position = Vector2(153, -340)
+states/Walk/node = SubResource("AnimationNodeBlendTree_r2v78")
+states/Walk/position = Vector2(153, -163.421)
+transitions = ["Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_d85vr"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ri70u"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_5awqj")]
+graph_offset = Vector2(-440.065, -355.348)
+
+[node name="Flip" type="Node2D"]
+scale = Vector2(-1, 1)
+
+[node name="Visual" type="Node2D" parent="."]
+script = SubResource("GDScript_nxa7u")
+
+[node name="Base" type="Sprite2D" parent="Visual"]
+position = Vector2(-35, 0)
+
+[node name="Armor" type="Sprite2D" parent="Visual/Base"]
+flip_h = true
+
+[node name="Capa" type="Sprite2D" parent="Visual/Base/Armor"]
+position = Vector2(36.8209, -77.3232)
+
+[node name="PivotCapa" type="Sprite2D" parent="Visual/Base/Armor/Capa"]
+
+[node name="Cap" type="Sprite2D" parent="Visual/Base/Armor/Capa/PivotCapa"]
+position = Vector2(7.68, 17.323)
+
+[node name="CapCor" type="Sprite2D" parent="Visual/Base/Armor/Capa/PivotCapa"]
+position = Vector2(51.697, -29.779)
+
+[node name="PernaD" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(28.9874, -41.5039)
+texture = ExtResource("1_2k17i")
+
+[node name="PivotPernaD" type="Sprite2D" parent="Visual/Base/Armor/PernaD"]
+
+[node name="LegD" type="Sprite2D" parent="Visual/Base/Armor/PernaD/PivotPernaD"]
+position = Vector2(3.483, 3.504)
+
+[node name="LegDCor" type="Sprite2D" parent="Visual/Base/Armor/PernaD/PivotPernaD"]
+position = Vector2(-0.204, -1.174)
+
+[node name="PeD" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(21.3742, -15.0561)
+texture = ExtResource("2_babcc")
+
+[node name="PivotPeD" type="Sprite2D" parent="Visual/Base/Armor/PeD"]
+
+[node name="FootD" type="Sprite2D" parent="Visual/Base/Armor/PeD/PivotPeD"]
+position = Vector2(-5.712, -7.551)
+
+[node name="FootDCor" type="Sprite2D" parent="Visual/Base/Armor/PeD/PivotPeD"]
+position = Vector2(0.626, -4.505)
+
+[node name="MaoD" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(4.48444, -80.0041)
+texture = ExtResource("3_jnbcr")
+
+[node name="PivotMaoD" type="Sprite2D" parent="Visual/Base/Armor/MaoD"]
+
+[node name="HandD" type="Sprite2D" parent="Visual/Base/Armor/MaoD/PivotMaoD"]
+position = Vector2(4.202, 18.004)
+
+[node name="HandDCor" type="Sprite2D" parent="Visual/Base/Armor/MaoD/PivotMaoD"]
+position = Vector2(-2, 0)
+
+[node name="OmbroD" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(20.4844, -118.004)
+texture = ExtResource("4_d3pce")
+
+[node name="PivotOmbroD" type="Sprite2D" parent="Visual/Base/Armor/OmbroD"]
+
+[node name="ShoulderD" type="Sprite2D" parent="Visual/Base/Armor/OmbroD/PivotOmbroD"]
+position = Vector2(-4.4844, -12.996)
+
+[node name="ShoulderDCor" type="Sprite2D" parent="Visual/Base/Armor/OmbroD/PivotOmbroD"]
+position = Vector2(-2.728, 7.898)
+
+[node name="AntebracoD" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(10.4844, -98.0041)
+texture = ExtResource("5_6g3yr")
+
+[node name="PivotAntebracoD" type="Sprite2D" parent="Visual/Base/Armor/AntebracoD"]
+
+[node name="ForearmD" type="Sprite2D" parent="Visual/Base/Armor/AntebracoD/PivotAntebracoD"]
+position = Vector2(0.122, 30.004)
+
+[node name="ForearmDCor" type="Sprite2D" parent="Visual/Base/Armor/AntebracoD/PivotAntebracoD"]
+position = Vector2(2.737, -9.426)
+
+[node name="CoxaD" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(24.7068, -72.67)
+texture = ExtResource("6_a4vl4")
+
+[node name="PivotCoxaD" type="Sprite2D" parent="Visual/Base/Armor/CoxaD"]
+
+[node name="ThighD" type="Sprite2D" parent="Visual/Base/Armor/CoxaD/PivotCoxaD"]
+position = Vector2(-2.7068, 4.67)
+
+[node name="ThighDCor" type="Sprite2D" parent="Visual/Base/Armor/CoxaD/PivotCoxaD"]
+position = Vector2(-1.669, 0.67)
+
+[node name="PernaE" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(56.1558, -23.9398)
+texture = ExtResource("7_m7404")
+
+[node name="PivotPernaE" type="Sprite2D" parent="Visual/Base/Armor/PernaE"]
+
+[node name="LegE" type="Sprite2D" parent="Visual/Base/Armor/PernaE/PivotPernaE"]
+position = Vector2(4.741, -4.06)
+
+[node name="LegECor" type="Sprite2D" parent="Visual/Base/Armor/PernaE/PivotPernaE"]
+position = Vector2(1.8442, -2.0602)
+
+[node name="PeE" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(56.343, 8.56187)
+texture = ExtResource("8_wldq0")
+
+[node name="PivotPeE" type="Sprite2D" parent="Visual/Base/Armor/PeE"]
+
+[node name="FootE" type="Sprite2D" parent="Visual/Base/Armor/PeE/PivotPeE"]
+position = Vector2(1.657, -10.5619)
+
+[node name="FootECor" type="Sprite2D" parent="Visual/Base/Armor/PeE/PivotPeE"]
+position = Vector2(7.657, -0.56187)
+
+[node name="CoxaE" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(45.2176, -65.2509)
+texture = ExtResource("9_l2t5c")
+
+[node name="PivotCoxaE" type="Sprite2D" parent="Visual/Base/Armor/CoxaE"]
+
+[node name="ThighE" type="Sprite2D" parent="Visual/Base/Armor/CoxaE/PivotCoxaE"]
+position = Vector2(9.599, 9.251)
+
+[node name="ThighECor" type="Sprite2D" parent="Visual/Base/Armor/CoxaE/PivotCoxaE"]
+position = Vector2(6.257, 2.029)
+
+[node name="Tronco" type="Sprite2D" parent="Visual/Base/Armor"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(40, -111)
+texture = ExtResource("10_hrxbw")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="PivotArmadura" type="Sprite2D" parent="Visual/Base/Armor/Tronco"]
+
+[node name="Armadura" type="Sprite2D" parent="Visual/Base/Armor/Tronco/PivotArmadura"]
+position = Vector2(10.958, 45)
+
+[node name="ArmaduraCor" type="Sprite2D" parent="Visual/Base/Armor/Tronco/PivotArmadura"]
+position = Vector2(10.751, 42.32)
+
+[node name="cachecol" type="Sprite2D" parent="Visual/Base/Armor/Tronco"]
+position = Vector2(44, -25)
+
+[node name="Rabo" type="Sprite2D" parent="Visual/Base"]
+z_index = -1
+position = Vector2(102.684, -149.931)
+
+[node name="PivotRabo" type="Sprite2D" parent="Visual/Base/Rabo"]
+
+[node name="Rab" type="Sprite2D" parent="Visual/Base/Rabo/PivotRabo"]
+position = Vector2(-46.684, 33.872)
+
+[node name="RabCor" type="Sprite2D" parent="Visual/Base/Rabo/PivotRabo"]
+position = Vector2(-34.684, 29.931)
+
+[node name="Cabeca" type="Sprite2D" parent="Visual/Base"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(46.05, -172.767)
+texture = ExtResource("11_dv7lt")
+
+[node name="PivotFace" type="Sprite2D" parent="Visual/Base/Cabeca"]
+
+[node name="face" type="Sprite2D" parent="Visual/Base/Cabeca/PivotFace"]
+position = Vector2(-9.894, 9.515)
+texture = ExtResource("12_85fag")
+
+[node name="PivotCabelo" type="Sprite2D" parent="Visual/Base/Cabeca"]
+
+[node name="Hair" type="Sprite2D" parent="Visual/Base/Cabeca/PivotCabelo"]
+position = Vector2(23.95, -3.233)
+texture = ExtResource("13_q3ul6")
+
+[node name="PivotChapeu" type="Sprite2D" parent="Visual/Base/Cabeca"]
+
+[node name="Hat" type="Sprite2D" parent="Visual/Base/Cabeca/PivotChapeu"]
+position = Vector2(1.95, -19.233)
+texture = ExtResource("14_i417t")
+
+[node name="HatCor" type="Sprite2D" parent="Visual/Base/Cabeca/PivotChapeu"]
+modulate = Color(0.419608, 0.356863, 0.403922, 1)
+position = Vector2(3.95, -5.105)
+
+[node name="OmbroE" type="Sprite2D" parent="Visual/Base"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(68, -128.181)
+texture = ExtResource("15_vlla2")
+
+[node name="PivotOmbroE" type="Sprite2D" parent="Visual/Base/OmbroE"]
+
+[node name="ShoulderE" type="Sprite2D" parent="Visual/Base/OmbroE/PivotOmbroE"]
+position = Vector2(16, -6.819)
+
+[node name="ShoulderECor" type="Sprite2D" parent="Visual/Base/OmbroE/PivotOmbroE"]
+position = Vector2(-2.334, 12.432)
+
+[node name="MaoE" type="Sprite2D" parent="Visual/Base"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(72.7874, -78.8976)
+texture = ExtResource("16_kg70p")
+
+[node name="PivotArma" type="Sprite2D" parent="Visual/Base/MaoE"]
+
+[node name="arma" type="Sprite2D" parent="Visual/Base/MaoE/PivotArma"]
+position = Vector2(-74.7874, -3.1024)
+texture = ExtResource("17_vfljh")
+offset = Vector2(80, 24)
+
+[node name="PivotMaoE" type="Sprite2D" parent="Visual/Base/MaoE"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+texture = ExtResource("18_yes0r")
+
+[node name="HandE" type="Sprite2D" parent="Visual/Base/MaoE/PivotMaoE"]
+position = Vector2(-0.787399, 6.8976)
+
+[node name="HandECor" type="Sprite2D" parent="Visual/Base/MaoE/PivotMaoE"]
+position = Vector2(-0.787399, 2.8976)
+
+[node name="AntebracoE" type="Sprite2D" parent="Visual/Base"]
+self_modulate = Color(0.572549, 0.423529, 0.239216, 1)
+position = Vector2(76, -104)
+texture = ExtResource("19_qt5uj")
+
+[node name="PivotAntebracoE" type="Sprite2D" parent="Visual/Base/AntebracoE"]
+
+[node name="ForearmE" type="Sprite2D" parent="Visual/Base/AntebracoE/PivotAntebracoE"]
+position = Vector2(-0.550003, 6)
+
+[node name="ForearmECor" type="Sprite2D" parent="Visual/Base/AntebracoE/PivotAntebracoE"]
+position = Vector2(-2.868, 11.523)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+autoplay = "idle"
+reset_on_save = false
+speed_scale = 2.0
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_ffihl")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Visual"]
+tree_root = SubResource("19")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/idle = false
+parameters/conditions/walk = false
+parameters/Walk/TimeScale/scale = 3.3

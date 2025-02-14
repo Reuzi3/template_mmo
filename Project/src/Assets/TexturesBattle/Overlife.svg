@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 200 38" style="enable-background:new 0 0 200 38;" xml:space="preserve">
+<style type="text/css">
+	.st0{enable-background:new    ;}
+	.st1{fill:url(#SVGID_1_);}
+	.st2{filter:url(#Adobe_OpacityMaskFilter);}
+	.st3{fill:#FFFFFF;}
+	.st4{mask:url(#Mask_Mask_1_3_);}
+	.st5{fill:#333333;}
+	.st6{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}
+	.st7{fill:none;stroke:#000000;}
+</style>
+<g class="st0">
+	<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+		<g id="prgHealth_1_" transform="matrix( 1, 0, 0, 1, 86.95,11.15) ">
+			<g id="bg_1_" transform="matrix( 1, 0, 0, 1, 0,0) ">
+				<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+					<g>
+						<g id="Symbol_3392_0_Layer0_0_FILL_1_">
+							
+								<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-162.1971" y1="22.3804" x2="11.7029" y2="22.3804" gradientTransform="matrix(1 0 0 -1 86.95 28.85)">
+								<stop  offset="0" style="stop-color:#E18850"/>
+								<stop  offset="1" style="stop-color:#FBF700"/>
+							</linearGradient>
+							<path class="st1" d="M98.7-4.7H-60.9l-14.3,22.4H84.4L98.7-4.7z"/>
+						</g>
+					</g>
+				</g>
+			</g>
+			<defs>
+				<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-75.7" y="-5.2" width="174.9" height="23.3">
+					<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+				</filter>
+			</defs>
+			<mask maskUnits="userSpaceOnUse" x="-75.7" y="-5.2" width="174.9" height="23.3" id="Mask_Mask_1_3_">
+				<g transform="matrix( 1, 0, 0, 1, 0,0) " class="st2">
+					<g>
+						<g id="Mask_Symbol_3397_0_2_MASK_0_FILL_3_">
+							<path class="st3" d="M98.7-4.7H-60.9l-14.3,22.4H84.4L98.7-4.7z"/>
+						</g>
+					</g>
+				</g>
+			</mask>
+			<g class="st4">
+				<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+					<g>
+						<g id="Symbol_3397_0_Layer2_0_FILL_1_">
+							<path class="st5" d="M84.4,17.6L98.7-4.7H-60.9l-14.3,22.4H84.4z"/>
+						</g>
+					</g>
+					<g>
+						<path id="Symbol_3397_0_Layer2_0_1_STROKES_1_" class="st6" d="M-75.2,17.6l14.3-22.4H98.7L84.4,17.6H-75.2z"/>
+					</g>
+				</g>
+			</g>
+			<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+				<g>
+					<path id="Symbol_3397_0_Layer0_0_1_STROKES_1_" class="st7" d="M98.7-4.7H-60.9l-14.3,22.4H84.4L98.7-4.7z"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

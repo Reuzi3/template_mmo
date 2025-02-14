@@ -1,0 +1,961 @@
+[gd_scene load_steps=57 format=3 uid="uid://fxnvocnqde8j"]
+
+[ext_resource type="Script" path="res://src/Scripts/web/RegisterRC.gd" id="1_hklo0"]
+[ext_resource type="FontFile" uid="uid://dfh286wcfna22" path="res://src/fonts/FontsFree-Net-BIGJOHN.ttf" id="1_lsfdk"]
+[ext_resource type="Texture2D" uid="uid://bvph2p34ehi0n" path="res://src/Assets/CreateCharacter/Springn.png" id="2_dwmcf"]
+[ext_resource type="Texture2D" uid="uid://chk2e8c61w83r" path="res://src/Assets/MenuTextures/Animstars/Strela2.png" id="3_lpkgf"]
+[ext_resource type="Texture2D" uid="uid://d32y8c460wvag" path="res://src/Assets/MenuTextures/BG3.png" id="3_pddxa"]
+[ext_resource type="Texture2D" uid="uid://jlrxmm3tc8nj" path="res://src/Assets/CreateCharacter/Spring.png" id="3_sh6wx"]
+[ext_resource type="Texture2D" uid="uid://ccxp4w5gxtjte" path="res://src/Assets/MenuTextures/Animstars/Strela.png" id="4_f378v"]
+[ext_resource type="Texture2D" uid="uid://bq11d5g1l5804" path="res://src/Assets/CreateCharacter/Summern.png" id="5_s8g7k"]
+[ext_resource type="Texture2D" uid="uid://cntdwoa1c5rg6" path="res://src/Assets/CreateCharacter/Summer.png" id="6_hg2cs"]
+[ext_resource type="Texture2D" uid="uid://xyswuduqf8fb" path="res://src/Assets/CreateCharacter/Scout.svg" id="6_iebr3"]
+[ext_resource type="Texture2D" uid="uid://diig3ywb1a7ck" path="res://src/Assets/CreateCharacter/Falln.png" id="7_oadla"]
+[ext_resource type="Texture2D" uid="uid://cxf341i8lf3tp" path="res://src/Assets/CreateCharacter/Fall.png" id="8_83b0d"]
+[ext_resource type="Texture2D" uid="uid://d3df4jhb4jpe5" path="res://src/Assets/CreateCharacter/wintern.png" id="9_c6ubd"]
+[ext_resource type="Texture2D" uid="uid://1rgf1lid2gx7" path="res://src/Assets/CreateCharacter/winter.png" id="10_u6q1u"]
+[ext_resource type="Texture2D" uid="uid://nyajmkmv82vy" path="res://src/Assets/CreateCharacter/ScoutCinza.svg" id="11_10qr5"]
+[ext_resource type="Texture2D" uid="uid://bafewj7tdacqh" path="res://src/Assets/CreateCharacter/plw.svg" id="11_ua8nw"]
+[ext_resource type="Texture2D" uid="uid://bg0km1edx0ggl" path="res://src/Assets/CreateCharacter/DesertBandit.svg" id="12_1axsg"]
+[ext_resource type="FontFile" uid="uid://yp001qaohkjm" path="res://src/fonts/Bronzetti Small Capitals Bold.otf" id="12_eaht5"]
+[ext_resource type="PackedScene" uid="uid://drp5ik5doyma1" path="res://src/scenes/Entitys/Player&Peer/PlayerBatalha.tscn" id="12_ec0kc"]
+[ext_resource type="Script" path="res://src/Scripts/ButtoSFX.gd" id="13_2gr0n"]
+[ext_resource type="FontFile" uid="uid://d4b8qnskv1ejy" path="res://src/fonts/CircularSpotifyTxT-Bold.ttf" id="13_ocoss"]
+[ext_resource type="Script" path="res://src/Scripts/ButtonAudioEffect.gd" id="13_v8xn8"]
+[ext_resource type="Texture2D" uid="uid://im0iad42icmt" path="res://src/Assets/CreateCharacter/Hsoldier.svg" id="14_iu4ag"]
+[ext_resource type="FontFile" uid="uid://8mwdmldncdov" path="res://src/fonts/73_Verdana.ttf" id="14_lhm0m"]
+[ext_resource type="Texture2D" uid="uid://c7ny10bikxiyv" path="res://src/Assets/CreateCharacter/DesertBanditCinza.svg" id="15_2px8x"]
+[ext_resource type="Texture2D" uid="uid://8msef20ixsbm" path="res://src/Assets/MenuTextures/Botoes/ButtonPattern.png" id="15_gqiq1"]
+[ext_resource type="Texture2D" uid="uid://b3vwdku4lgjwg" path="res://src/Assets/MenuTextures/Botoes/ButtonHover.png" id="16_8cqv3"]
+[ext_resource type="Texture2D" uid="uid://mnyn1i68vfii" path="res://src/Assets/CreateCharacter/Clair.svg" id="17_ipte8"]
+[ext_resource type="Texture2D" uid="uid://3u0uccrimnbm" path="res://src/Assets/CreateCharacter/HsoldierCinza.svg" id="19_h0oax"]
+[ext_resource type="Texture2D" uid="uid://bctt6qsthcayi" path="res://src/Assets/CreateCharacter/ClairCinza.svg" id="21_wuwlc"]
+[ext_resource type="Texture2D" uid="uid://i7xrk8lufvja" path="res://src/Assets/MenuTextures/Botoes/9slice_darkblue_box.png" id="26_1b0jx"]
+[ext_resource type="Texture2D" uid="uid://dvecwft7ch753" path="res://src/Assets/Map/Portal/Light.png" id="26_tktpq"]
+[ext_resource type="Texture2D" uid="uid://56o3r7txdsoy" path="res://src/Assets/MenuTextures/Botoes/Som.png" id="28_bgooy"]
+[ext_resource type="Script" path="res://src/Scripts/SomBGM2.gd" id="28_qies7"]
+[ext_resource type="Texture2D" uid="uid://cidvyybjwknve" path="res://src/Assets/CreateCharacter/281.png" id="33_se0pn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_difea"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_dtix3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0p57m"]
+texture = ExtResource("11_10qr5")
+expand_margin_left = 65.0
+expand_margin_top = 45.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.34902, 0.34902, 0.34902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xehfi"]
+texture = ExtResource("6_iebr3")
+expand_margin_left = 65.0
+expand_margin_top = 45.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_64esg"]
+texture = ExtResource("6_iebr3")
+expand_margin_left = 65.0
+expand_margin_top = 45.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sl57f"]
+texture = ExtResource("6_iebr3")
+expand_margin_left = 65.0
+expand_margin_top = 45.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_om6w6"]
+texture = ExtResource("15_2px8x")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.34902, 0.34902, 0.34902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81dxm"]
+texture = ExtResource("12_1axsg")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wpjcv"]
+texture = ExtResource("12_1axsg")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_esh3u"]
+texture = ExtResource("12_1axsg")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dflut"]
+texture = ExtResource("19_h0oax")
+expand_margin_left = 75.0
+expand_margin_top = 75.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.34902, 0.34902, 0.34902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lg37i"]
+texture = ExtResource("14_iu4ag")
+expand_margin_left = 75.0
+expand_margin_top = 75.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x3r64"]
+texture = ExtResource("14_iu4ag")
+expand_margin_left = 75.0
+expand_margin_top = 75.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7mac6"]
+texture = ExtResource("14_iu4ag")
+expand_margin_left = 75.0
+expand_margin_top = 75.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ab4xt"]
+texture = ExtResource("21_wuwlc")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.34902, 0.34902, 0.34902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dgjap"]
+texture = ExtResource("17_ipte8")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w7fik"]
+texture = ExtResource("17_ipte8")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ekj6"]
+texture = ExtResource("17_ipte8")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="Animation" id="Animation_keylx"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_rlgf6"]
+resource_name = "Twen"
+length = 1.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6u5f7"]
+_data = {
+"RESET": SubResource("Animation_keylx"),
+"Twen": SubResource("Animation_rlgf6")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hklo0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 23.0
+offset_right = 2.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_difea")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = -106.0
+offset_top = -200.0
+offset_right = 1290.0
+offset_bottom = 864.0
+texture = ExtResource("3_pddxa")
+expand_mode = 1
+stretch_mode = 1
+metadata/_edit_group_ = true
+
+[node name="estrelas" type="TextureRect" parent="Panel/TextureRect"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = -40.0
+offset_right = 2448.0
+offset_bottom = 1905.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_lpkgf")
+metadata/_edit_lock_ = true
+
+[node name="estrelas2" type="TextureRect" parent="Panel/TextureRect"]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 555.0
+offset_right = 2736.0
+offset_bottom = 2500.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_lpkgf")
+metadata/_edit_lock_ = true
+
+[node name="estrelas3" type="TextureRect" parent="Panel/TextureRect"]
+layout_mode = 0
+offset_left = -491.0
+offset_top = 605.0
+offset_right = 1567.0
+offset_bottom = 2550.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_lpkgf")
+metadata/_edit_lock_ = true
+
+[node name="estrelas5" type="TextureRect" parent="Panel/TextureRect"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 664.0
+offset_right = 2086.0
+offset_bottom = 2609.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_lpkgf")
+metadata/_edit_lock_ = true
+
+[node name="estrelas6" type="TextureRect" parent="Panel/TextureRect"]
+layout_mode = 0
+offset_left = -282.0
+offset_top = 751.0
+offset_right = 1776.0
+offset_bottom = 2696.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_lpkgf")
+metadata/_edit_lock_ = true
+
+[node name="estrelas4" type="TextureRect" parent="Panel/TextureRect"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -90.0
+offset_right = 2738.0
+offset_bottom = 1746.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_f378v")
+expand_mode = 2
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Light" type="Sprite2D" parent="Panel/TextureRect"]
+self_modulate = Color(1, 1, 1, 0.054902)
+position = Vector2(815.353, 506.622)
+rotation = -0.0918822
+scale = Vector2(8.68099, 5.11764)
+texture = ExtResource("26_tktpq")
+
+[node name="Light2" type="Sprite2D" parent="Panel/TextureRect"]
+self_modulate = Color(1, 1, 1, 0.0941176)
+position = Vector2(164.006, 490.187)
+rotation = 0.00228491
+scale = Vector2(1.26654, 4.75387)
+texture = ExtResource("26_tktpq")
+
+[node name="Chose" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 25.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_lsfdk")
+theme_override_font_sizes/font_size = 23
+text = "CHOOSE YOUR  ALLEGIANCE"
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel"]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 99.0
+offset_bottom = 508.0
+theme = SubResource("Theme_dtix3")
+texture = ExtResource("26_1b0jx")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="ColorRect" type="ColorRect" parent="Panel/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.447059)
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect"]
+layout_mode = 0
+offset_top = 11.0
+offset_right = 102.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_eaht5")
+theme_override_font_sizes/font_size = 18
+text = "Seasons"
+horizontal_alignment = 1
+
+[node name="Seasons" type="HFlowContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -627.0
+offset_top = -247.0
+offset_right = -552.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 55
+theme_override_constants/v_separation = 45
+alignment = 1
+
+[node name="Spring" type="TextureButton" parent="Panel/Seasons"]
+layout_mode = 2
+texture_normal = ExtResource("2_dwmcf")
+texture_pressed = ExtResource("2_dwmcf")
+texture_hover = ExtResource("3_sh6wx")
+script = ExtResource("13_v8xn8")
+
+[node name="Human" type="Button" parent="Panel/Seasons/Spring" groups=["BotoesGrupo"]]
+layout_mode = 2
+offset_left = 242.0
+offset_top = -4.0
+offset_right = 640.001
+offset_bottom = 617.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_0p57m")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xehfi")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_64esg")
+theme_override_styles/focus = SubResource("StyleBoxTexture_sl57f")
+action_mode = 0
+script = ExtResource("13_2gr0n")
+
+[node name="ClassName" type="Label" parent="Panel/Seasons/Spring/Human"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = 7.0
+offset_right = 58.9997
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("12_eaht5")
+theme_override_font_sizes/font_size = 35
+text = "Human"
+horizontal_alignment = 1
+
+[node name="Spring" type="Label" parent="Panel/Seasons/Spring"]
+layout_mode = 2
+offset_left = -13.0
+offset_top = 62.0
+offset_right = 60.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("1_lsfdk")
+theme_override_font_sizes/font_size = 15
+text = "SPRING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Summer" type="TextureButton" parent="Panel/Seasons"]
+layout_mode = 2
+texture_normal = ExtResource("5_s8g7k")
+texture_pressed = ExtResource("5_s8g7k")
+texture_hover = ExtResource("6_hg2cs")
+script = ExtResource("13_v8xn8")
+
+[node name="Elf" type="Button" parent="Panel/Seasons/Summer" groups=["BotoesGrupo"]]
+layout_mode = 0
+offset_left = 452.0
+offset_top = -106.5
+offset_right = 767.999
+offset_bottom = 509.5
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_om6w6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_81dxm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wpjcv")
+theme_override_styles/focus = SubResource("StyleBoxTexture_esh3u")
+action_mode = 0
+script = ExtResource("13_2gr0n")
+
+[node name="ClassName" type="Label" parent="Panel/Seasons/Summer/Elf"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 636.0
+offset_right = 333.0
+offset_bottom = 684.0
+theme_override_fonts/font = ExtResource("12_eaht5")
+theme_override_font_sizes/font_size = 32
+text = "Elf"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Summer" type="Label" parent="Panel/Seasons/Summer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = 7.0
+offset_right = 35.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_fonts/font = ExtResource("1_lsfdk")
+theme_override_font_sizes/font_size = 15
+text = "SUMMER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fall" type="TextureButton" parent="Panel/Seasons"]
+layout_mode = 2
+texture_normal = ExtResource("7_oadla")
+texture_pressed = ExtResource("7_oadla")
+texture_hover = ExtResource("8_83b0d")
+script = ExtResource("13_v8xn8")
+
+[node name="Dwarf" type="Button" parent="Panel/Seasons/Fall" groups=["BotoesGrupo"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 636.0
+offset_top = -238.0
+offset_right = 990.0
+offset_bottom = 410.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_dflut")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lg37i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x3r64")
+theme_override_styles/focus = SubResource("StyleBoxTexture_7mac6")
+script = ExtResource("13_2gr0n")
+
+[node name="ClassName" type="Label" parent="Panel/Seasons/Fall/Dwarf"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 658.0
+offset_right = 238.0
+offset_bottom = 694.0
+theme_override_fonts/font = ExtResource("12_eaht5")
+theme_override_font_sizes/font_size = 32
+text = "Dwarf"
+
+[node name="Fall" type="Label" parent="Panel/Seasons/Fall"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = 13.0
+offset_right = 35.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_fonts/font = ExtResource("1_lsfdk")
+theme_override_font_sizes/font_size = 15
+text = "FALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Winter" type="TextureButton" parent="Panel/Seasons"]
+layout_mode = 2
+texture_normal = ExtResource("9_c6ubd")
+texture_pressed = ExtResource("9_c6ubd")
+texture_hover = ExtResource("10_u6q1u")
+script = ExtResource("13_v8xn8")
+
+[node name="Orc" type="Button" parent="Panel/Seasons/Winter" groups=["BotoesGrupo"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 818.5
+offset_top = -354.5
+offset_right = 1246.5
+offset_bottom = 341.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_ab4xt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dgjap")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_w7fik")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0ekj6")
+script = ExtResource("13_2gr0n")
+
+[node name="ClassName" type="Label" parent="Panel/Seasons/Winter/Orc"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 698.0
+offset_right = 440.0
+offset_bottom = 734.0
+theme_override_fonts/font = ExtResource("12_eaht5")
+theme_override_font_sizes/font_size = 32
+text = "Orc"
+horizontal_alignment = 1
+
+[node name="Winter" type="Label" parent="Panel/Seasons/Winter"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = 13.0
+offset_right = 35.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_fonts/font = ExtResource("1_lsfdk")
+theme_override_font_sizes/font_size = 15
+text = "WINTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="podio" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 647.0
+offset_right = 590.0
+offset_bottom = 806.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_ua8nw")
+stretch_mode = 2
+
+[node name="SomBGM" type="TextureButton" parent="Panel/podio"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -458.0
+offset_top = -1288.0
+offset_right = -412.0
+offset_bottom = -1246.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("28_bgooy")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("28_qies7")
+
+[node name="Pronto" type="TextureButton" parent="Panel/podio"]
+layout_mode = 0
+offset_left = 1810.0
+offset_top = -730.0
+offset_right = 2104.0
+offset_bottom = -646.0
+texture_normal = ExtResource("15_gqiq1")
+texture_pressed = ExtResource("15_gqiq1")
+texture_hover = ExtResource("16_8cqv3")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("13_v8xn8")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Panel/podio/Pronto"]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 292.0
+offset_bottom = 84.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_lsfdk")
+theme_override_font_sizes/font_size = 36
+text = "READY"
+horizontal_alignment = 1
+
+[node name="PlayerBatalha" parent="Panel" instance=ExtResource("12_ec0kc")]
+position = Vector2(320, 676)
+rotation = 3.14159
+scale = Vector2(0.5, -0.5)
+
+[node name="BGM" type="AudioStreamPlayer" parent="Panel"]
+volume_db = -5.266
+
+[node name="SFX" type="AudioStreamPlayer" parent="Panel"]
+volume_db = -24.215
+pitch_scale = 1.23
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Panel"]
+self_modulate = Color(1, 1, 1, 0.294118)
+layout_mode = 0
+offset_left = 506.0
+offset_top = 594.0
+offset_right = 3958.0
+offset_bottom = 986.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("33_se0pn")
+patch_margin_top = 30
+patch_margin_bottom = 30
+
+[node name="ColorRect3" type="ColorRect" parent="Panel/NinePatchRect2"]
+self_modulate = Color(1, 1, 1, 0.0745098)
+layout_mode = 0
+offset_left = 260.0
+offset_top = 4.0
+offset_right = 3104.0
+offset_bottom = 104.0
+
+[node name="ColorRect2" type="ColorRect" parent="Panel/NinePatchRect2"]
+self_modulate = Color(1, 1, 1, 0.0745098)
+layout_mode = 0
+offset_left = 260.0
+offset_top = 140.0
+offset_right = 3104.0
+offset_bottom = 240.0
+
+[node name="ColorRect4" type="ColorRect" parent="Panel/NinePatchRect2"]
+self_modulate = Color(1, 1, 1, 0.0745098)
+layout_mode = 0
+offset_left = 260.0
+offset_top = 276.0
+offset_right = 3104.0
+offset_bottom = 380.0
+
+[node name="Atributos" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 30.0
+offset_right = -1.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hit Points" type="Label" parent="Panel/Atributos"]
+layout_mode = 2
+offset_left = 595.0
+offset_top = 603.0
+offset_right = 716.0
+offset_bottom = 631.0
+theme_override_fonts/font = ExtResource("13_ocoss")
+theme_override_font_sizes/font_size = 22
+text = "Hit Points:"
+
+[node name="Valor" type="Label" parent="Panel/Atributos/Hit Points"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -18.0
+offset_right = 37.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.729412, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.305882)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("14_lhm0m")
+theme_override_font_sizes/font_size = 20
+text = "80"
+horizontal_alignment = 1
+
+[node name="Skill Points" type="Label" parent="Panel/Atributos"]
+layout_mode = 2
+offset_left = 595.0
+offset_top = 637.0
+offset_right = 723.0
+offset_bottom = 665.0
+theme_override_fonts/font = ExtResource("13_ocoss")
+theme_override_font_sizes/font_size = 22
+text = "Skill Points:"
+
+[node name="Valor" type="Label" parent="Panel/Atributos/Skill Points"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -18.0
+offset_right = 31.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.729412, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.305882)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("14_lhm0m")
+theme_override_font_sizes/font_size = 20
+text = "40"
+horizontal_alignment = 1
+
+[node name="Magic" type="Label" parent="Panel/Atributos"]
+layout_mode = 2
+offset_left = 780.0
+offset_top = 569.0
+offset_right = 861.0
+offset_bottom = 597.0
+theme_override_fonts/font = ExtResource("13_ocoss")
+theme_override_font_sizes/font_size = 22
+text = "Magic:"
+
+[node name="Valor" type="Label" parent="Panel/Atributos/Magic"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -18.0
+offset_right = 30.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.729412, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.305882)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("14_lhm0m")
+theme_override_font_sizes/font_size = 20
+text = "2"
+horizontal_alignment = 1
+
+[node name="Attack" type="Label" parent="Panel/Atributos"]
+layout_mode = 2
+offset_left = 780.0
+offset_top = 603.0
+offset_right = 865.0
+offset_bottom = 631.0
+theme_override_fonts/font = ExtResource("13_ocoss")
+theme_override_font_sizes/font_size = 22
+text = "Attack:"
+
+[node name="Valor" type="Label" parent="Panel/Atributos/Attack"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -18.0
+offset_right = 26.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.729412, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.305882)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("14_lhm0m")
+theme_override_font_sizes/font_size = 20
+text = "9"
+horizontal_alignment = 1
+
+[node name="Skill" type="Label" parent="Panel/Atributos"]
+layout_mode = 2
+offset_left = 780.0
+offset_top = 637.0
+offset_right = 837.0
+offset_bottom = 665.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_ocoss")
+theme_override_font_sizes/font_size = 22
+text = "Skill:"
+
+[node name="Valor" type="Label" parent="Panel/Atributos/Skill"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -18.0
+offset_right = 54.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.729412, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.305882)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("14_lhm0m")
+theme_override_font_sizes/font_size = 20
+text = "6"
+horizontal_alignment = 1
+
+[node name="Speed" type="Label" parent="Panel/Atributos"]
+layout_mode = 2
+offset_left = 930.0
+offset_top = 603.0
+offset_right = 1012.0
+offset_bottom = 631.0
+theme_override_fonts/font = ExtResource("13_ocoss")
+theme_override_font_sizes/font_size = 22
+text = "Speed:"
+
+[node name="Valor" type="Label" parent="Panel/Atributos/Speed"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -18.0
+offset_right = 23.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.729412, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.305882)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("14_lhm0m")
+theme_override_font_sizes/font_size = 20
+text = "2"
+horizontal_alignment = 1
+
+[node name="Luck" type="Label" parent="Panel/Atributos"]
+layout_mode = 2
+offset_left = 930.0
+offset_top = 637.0
+offset_right = 994.0
+offset_bottom = 665.0
+theme_override_fonts/font = ExtResource("13_ocoss")
+theme_override_font_sizes/font_size = 22
+text = "Luck:"
+
+[node name="Valor" type="Label" parent="Panel/Atributos/Luck"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = -18.0
+offset_right = 41.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.729412, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.305882)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("14_lhm0m")
+theme_override_font_sizes/font_size = 20
+text = "5"
+horizontal_alignment = 1
+
+[node name="Defense" type="Label" parent="Panel/Atributos"]
+layout_mode = 2
+offset_left = 1080.0
+offset_top = 603.0
+offset_right = 1184.0
+offset_bottom = 631.0
+theme_override_fonts/font = ExtResource("13_ocoss")
+theme_override_font_sizes/font_size = 22
+text = "Defense:"
+
+[node name="Valor" type="Label" parent="Panel/Atributos/Defense"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -18.0
+offset_right = 45.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.729412, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.305882)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("14_lhm0m")
+theme_override_font_sizes/font_size = 20
+text = "8"
+horizontal_alignment = 1
+
+[node name="Resistance" type="Label" parent="Panel/Atributos"]
+layout_mode = 2
+offset_left = 1080.0
+offset_top = 637.0
+offset_right = 1213.0
+offset_bottom = 665.0
+theme_override_fonts/font = ExtResource("13_ocoss")
+theme_override_font_sizes/font_size = 22
+text = "Resistance:"
+
+[node name="Valor" type="Label" parent="Panel/Atributos/Resistance"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -18.0
+offset_right = 16.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.729412, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.305882)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("14_lhm0m")
+theme_override_font_sizes/font_size = 20
+text = "2"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Twen"
+libraries = {
+"": SubResource("AnimationLibrary_6u5f7")
+}
+
+[connection signal="pressed" from="Panel/Seasons/Spring" to="." method="_on_Season_pressed" binds= ["SPRING"]]
+[connection signal="pressed" from="Panel/Seasons/Spring/Human" to="." method="_on_Race_pressed" binds= ["Human"]]
+[connection signal="pressed" from="Panel/Seasons/Summer" to="." method="_on_Season_pressed" binds= ["Summer"]]
+[connection signal="pressed" from="Panel/Seasons/Summer/Elf" to="." method="_on_Race_pressed" binds= ["Elf"]]
+[connection signal="pressed" from="Panel/Seasons/Fall" to="." method="_on_Season_pressed" binds= ["Fall"]]
+[connection signal="pressed" from="Panel/Seasons/Fall/Dwarf" to="." method="_on_Race_pressed" binds= ["Dwarf"]]
+[connection signal="pressed" from="Panel/Seasons/Winter" to="." method="_on_Season_pressed" binds= ["Winter"]]
+[connection signal="pressed" from="Panel/Seasons/Winter/Orc" to="." method="_on_Race_pressed" binds= ["Orc"]]
+[connection signal="pressed" from="Panel/podio/Pronto" to="." method="_on_pronto_pressed"]

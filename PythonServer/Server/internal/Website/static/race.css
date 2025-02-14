@@ -1,0 +1,56 @@
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+td, th {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+
+#race, #hp, #sp, #att, #mag, #skl, #spd, #lck, #def, #res, #countdown {
+    font-weight: bold;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+    font-family: 'fantasy'; 
+    color: #555;
+}
+
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}

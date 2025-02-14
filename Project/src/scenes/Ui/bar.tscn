@@ -1,0 +1,325 @@
+[gd_scene load_steps=27 format=3 uid="uid://d1datuu5fu4a"]
+
+[ext_resource type="Script" path="res://src/scenes/Ui/TitleBar.gd" id="1_wqmpi"]
+[ext_resource type="Texture2D" uid="uid://ob2ynmdc4te3" path="res://src/Assets/MenuTextures/Botoes/CloseWin.svg" id="2_gtdnk"]
+[ext_resource type="Texture2D" uid="uid://cx4s34br5gs7y" path="res://src/Assets/MenuTextures/Botoes/ExpandWin.svg" id="3_6htah"]
+[ext_resource type="Texture2D" uid="uid://bd4poot1afj7j" path="res://src/Assets/MenuTextures/Botoes/MinimizeWin.svg" id="4_jp5x2"]
+[ext_resource type="FontFile" uid="uid://b373qf0y6pxdt" path="res://src/fonts/ARIAL.TTF" id="5_ahnq6"]
+[ext_resource type="Texture2D" uid="uid://dsen2e1a0727s" path="res://src/Assets/MenuTextures/Botoes/tinker.svg" id="6_0s76g"]
+[ext_resource type="FontFile" uid="uid://dfh286wcfna22" path="res://src/fonts/FontsFree-Net-BIGJOHN.ttf" id="6_cbom4"]
+[ext_resource type="Script" path="res://src/scenes/Ui/draw.gd" id="7_mlw8c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdk8e"]
+bg_color = Color(0.145098, 0.152941, 0.184314, 1)
+corner_detail = 7
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y0v2o"]
+texture = ExtResource("2_gtdnk")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mh1pt"]
+texture = ExtResource("2_gtdnk")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.996078, 0.388235, 0.298039, 0.917647)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5iql"]
+texture = ExtResource("2_gtdnk")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.345098, 0.345098, 0.345098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kf1qv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gww1c"]
+texture = ExtResource("3_6htah")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryaqa"]
+texture = ExtResource("3_6htah")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.729412, 0.729412, 0.729412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_61ke6"]
+texture = ExtResource("3_6htah")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.345098, 0.345098, 0.345098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0e157"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u6tkp"]
+texture = ExtResource("4_jp5x2")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7mrvo"]
+texture = ExtResource("4_jp5x2")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.729412, 0.729412, 0.729412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rtng0"]
+texture = ExtResource("4_jp5x2")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.345098, 0.345098, 0.345098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wohfn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c3u67"]
+texture = ExtResource("6_0s76g")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.854902, 0.854902, 0.854902, 0.968627)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cuuho"]
+texture = ExtResource("6_0s76g")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.52549, 0.52549, 0.52549, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqate"]
+texture = ExtResource("6_0s76g")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.854902, 0.854902, 0.854902, 0.968627)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0few0"]
+bg_color = Color(0.0976563, 0.101563, 0.105469, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.513726)
+
+[sub_resource type="GDScript" id="GDScript_j01vj"]
+script/source = "@tool
+extends Node2D
+
+
+
+func _draw():
+	draw_line(Vector2.ZERO, Vector2.RIGHT *1280, Color.GHOST_WHITE)
+"
+
+[node name="Bar" type="CanvasLayer"]
+
+[node name="TitleBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 1281.0
+offset_bottom = 30.0
+size_flags_horizontal = 4
+mouse_filter = 1
+script = ExtResource("1_wqmpi")
+
+[node name="Painel" type="Panel" parent="TitleBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdk8e")
+
+[node name="CloseButton" type="Button" parent="TitleBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -6.0
+offset_right = 3.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_y0v2o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mh1pt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u5iql")
+theme_override_styles/focus = SubResource("StyleBoxTexture_kf1qv")
+
+[node name="Maximize" type="Button" parent="TitleBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -6.0
+offset_right = -37.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_gww1c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ryaqa")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_61ke6")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0e157")
+
+[node name="Minimize" type="Button" parent="TitleBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -4.0
+offset_right = -80.0
+offset_bottom = 26.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_u6tkp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7mrvo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rtng0")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wohfn")
+
+[node name="Options" type="Button" parent="TitleBar"]
+layout_mode = 0
+offset_left = 1129.0
+offset_top = 9.0
+offset_right = 1167.0
+offset_bottom = 47.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_c3u67")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cuuho")
+theme_override_styles/focus = SubResource("StyleBoxTexture_uqate")
+
+[node name="Panel" type="Panel" parent="TitleBar/Options"]
+visible = false
+layout_mode = 0
+offset_left = -68.0
+offset_top = 52.0
+offset_right = 128.0
+offset_bottom = 342.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0few0")
+
+[node name="Button0" type="Button" parent="TitleBar/Options/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 10.0
+offset_right = -2.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "1920x1080"
+
+[node name="Button1" type="Button" parent="TitleBar/Options/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 62.0
+offset_right = -2.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "1280x720"
+
+[node name="Button2" type="Button" parent="TitleBar/Options/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 116.0
+offset_right = -2.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "768x432"
+
+[node name="Button3" type="Button" parent="TitleBar/Options/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 170.0
+offset_right = -2.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "640x360"
+
+[node name="PixelPerfect" type="Button" parent="TitleBar/Options/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 229.0
+offset_right = -2.0
+offset_bottom = 279.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Pixel Perfect"
+
+[node name="Label" type="Label" parent="TitleBar"]
+layout_mode = 1
+offset_top = 1.0
+offset_right = 98.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.184314, 0.184314, 0.184314, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("5_ahnq6")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReferenceRect" type="Node2D" parent="TitleBar"]
+self_modulate = Color(1, 1, 1, 0.101961)
+position = Vector2(0, 1)
+script = ExtResource("7_mlw8c")
+
+[node name="ReferenceRect2" type="Node2D" parent="TitleBar"]
+self_modulate = Color(1, 1, 1, 0.0784314)
+position = Vector2(1, 35)
+script = SubResource("GDScript_j01vj")
+
+[node name="Resolution" type="Label" parent="TitleBar/ReferenceRect2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 444.5
+offset_top = 275.5
+offset_right = 835.5
+offset_bottom = 378.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.698039, 0, 0.827451)
+theme_override_fonts/font = ExtResource("6_cbom4")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="TitleBar" to="TitleBar" method="_on_gui_input"]
+[connection signal="pressed" from="TitleBar/CloseButton" to="TitleBar" method="_on_close_button_pressed"]
+[connection signal="pressed" from="TitleBar/Maximize" to="TitleBar" method="_on_maximize_pressed"]
+[connection signal="pressed" from="TitleBar/Minimize" to="TitleBar" method="_on_minimize_pressed"]
+[connection signal="pressed" from="TitleBar/Options" to="TitleBar" method="_on_options_pressed"]
+[connection signal="pressed" from="TitleBar/Options/Panel/Button0" to="TitleBar" method="_on_button_0_pressed"]
+[connection signal="pressed" from="TitleBar/Options/Panel/Button1" to="TitleBar" method="_on_button_1_pressed"]
+[connection signal="pressed" from="TitleBar/Options/Panel/Button2" to="TitleBar" method="_on_button_2_pressed"]
+[connection signal="pressed" from="TitleBar/Options/Panel/Button3" to="TitleBar" method="_on_button_3_pressed"]

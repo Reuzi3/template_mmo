@@ -1,0 +1,853 @@
+[gd_scene load_steps=26 format=3 uid="uid://drp5ik5doyma1"]
+
+[ext_resource type="Texture2D" uid="uid://cikcnnj8v1tkk" path="res://src/Assets/PlayerBattle/Pele/Rabo.png" id="1_4m3af"]
+[ext_resource type="Texture2D" uid="uid://c7l1hr0t2trsv" path="res://src/Assets/PlayerBattle/Pele/Cap.png" id="2_73r7d"]
+[ext_resource type="Texture2D" uid="uid://cdkc52hivmych" path="res://src/Assets/PlayerBattle/Pele/PernaD.png" id="3_daxhi"]
+[ext_resource type="Texture2D" uid="uid://dwkhjt7yy43pc" path="res://src/Assets/PlayerBattle/Pele/PeD.png" id="4_hum0p"]
+[ext_resource type="Texture2D" uid="uid://cncgj64heffk8" path="res://src/Assets/PlayerBattle/Pele/MaoD.png" id="5_15vqg"]
+[ext_resource type="Texture2D" uid="uid://dynvurugijt1m" path="res://src/Assets/PlayerBattle/Pele/OmbroD.png" id="6_di3de"]
+[ext_resource type="Texture2D" uid="uid://brkfdfmlsnfuu" path="res://src/Assets/PlayerBattle/Pele/AntebracoD.png" id="7_5g1oy"]
+[ext_resource type="Texture2D" uid="uid://s203goeuvy8v" path="res://src/Assets/PlayerBattle/Pele/CoxaD.png" id="8_d1wwg"]
+[ext_resource type="Texture2D" uid="uid://cuaskl6o4roxy" path="res://src/Assets/PlayerBattle/Pele/PernaE.png" id="9_13a7l"]
+[ext_resource type="Texture2D" uid="uid://dvbabe7jp64co" path="res://src/Assets/PlayerBattle/Pele/PeE.png" id="10_dgfn6"]
+[ext_resource type="Texture2D" uid="uid://daohn507rqwed" path="res://src/Assets/PlayerBattle/Pele/CoxaE.png" id="11_tv58c"]
+[ext_resource type="Texture2D" uid="uid://csw8xfbaeq543" path="res://src/Assets/PlayerBattle/Pele/TroncoMasculino.png" id="12_qfsug"]
+[ext_resource type="Texture2D" uid="uid://dt02f2hrdkbmu" path="res://src/Assets/PlayerBattle/Pele/Cabeca.png" id="13_tc5dg"]
+[ext_resource type="Texture2D" uid="uid://camx77ei7vicg" path="res://src/Assets/PlayerBattle/Pele/OmbroE.png" id="14_71vnk"]
+[ext_resource type="Texture2D" uid="uid://c08iaongtncr3" path="res://src/Assets/PlayerBattle/Pele/MaoE.png" id="15_x0hrn"]
+[ext_resource type="Texture2D" uid="uid://u0qlfh7hhbm1" path="res://src/Assets/PlayerBattle/Pele/AntebracoE.png" id="16_8t8ts"]
+[ext_resource type="Animation" uid="uid://c1tdj1eyvqgyu" path="res://src/Assets/MenuTextures/Animstars/Ataque1.res" id="17_yitnd"]
+[ext_resource type="Animation" uid="uid://bl37nqvodys4v" path="res://src/Assets/MenuTextures/Animstars/Ataque2.res" id="19_6d1wa"]
+
+[sub_resource type="GDScript" id="GDScript_j372h"]
+script/source = "@tool
+extends Node2D
+
+@export var Body : Color = Color(1, 1, 1, 1): 
+	set(value):
+		Body=value
+		set_BodyColor(value)
+@export var Hair : Color = Color(1, 1, 1, 1): 
+	set(value):
+		Hair=value
+		set_HairColor(value)
+@export var Hat : Color = Color(1, 1, 1, 1): 
+	set(value):
+		Hat=value
+		set_HatColor(value)
+@export var skin : Color = Color(1, 1, 1, 1): 
+	set(value):
+		skin=value
+		set_skinColor(value)
+
+
+#Todo Remover tudo depois
+@export var id_armadura = -1: 
+	set(value): 
+		id_armadura=value
+		set_id_armadura(value)
+@export var id_arma = -1: 
+	set(value):
+		id_arma=value 
+		set_id_arma(value)
+@export var id_capacete = -1: 
+	set(value):
+		id_capacete=value
+		set_id_capacete(value)
+@export var id_face = -1: 
+	set(value):
+		id_face=value 
+		set_id_face(value)
+var partes_armadura : Array
+var partes_capacete : Array
+var arma : Sprite2D
+var face : Sprite2D
+var armadura_cor : Array
+var cabelo_cor : Array
+var chapeu_cor : Array
+var pele_cor : Array
+
+var pronto = false
+
+func _ready():
+	armadura_cor = [$AntebracoE/PivotAntebracoE/ForearmECor, $OmbroE/PivotOmbroE/ShoulderECor, $MaoE/PivotMaoE/HandECor, $Armor/Tronco/PivotArmadura/ArmaduraCor, $Armor/AntebracoD/PivotAntebracoD/ForearmDCor, $Armor/OmbroD/PivotOmbroD/ShoulderDCor, $Armor/MaoD/PivotMaoD/HandDCor, $Armor/CoxaE/PivotCoxaE/ThighECor, $Armor/PeE/PivotPeE/FootECor, $Armor/PernaE/PivotPernaE/LegECor, $Armor/CoxaD/PivotCoxaD/ThighDCor, $Armor/PeD/PivotPeD/FootDCor, $Armor/PernaD/PivotPernaD/LegDCor, $Armor/Capa/PivotCapa/CapCor]
+	cabelo_cor = [$Cabeca/PivotCabelo/Hair, $Rabo/PivotRabo/RabCor]
+	chapeu_cor = [$Cabeca/PivotChapeu/HatCor]
+	pele_cor = [$MaoE/PivotMaoE, $MaoE, $Armor/PernaD, $Armor/PeD, $Armor/CoxaD, $Armor/PernaE, $Armor/PeE, $Armor/CoxaE, $Armor/MaoD, $Armor/OmbroD, $Armor/AntebracoD, $Armor/Tronco, $MaoE, $OmbroE, $AntebracoE, $Cabeca]
+	partes_armadura = [$Armor/Tronco/cachecol, $Armor/Tronco, $Armor/PernaD/PivotPernaD/LegDCor, $Armor/PeD/PivotPeD/FootDCor, $Armor/CoxaD/PivotCoxaD/ThighDCor, $Armor/PernaE/PivotPernaE/LegE, $Armor/PeE/PivotPeE/FootECor, $Armor/CoxaE/PivotCoxaE/ThighECor, $Armor/MaoD/PivotMaoD/HandDCor, $Armor/OmbroD/PivotOmbroD/ShoulderDCor, $Armor/AntebracoD/PivotAntebracoD/ForearmDCor, $Armor/Tronco/PivotArmadura/Armadura, $MaoE/PivotMaoE/HandECor, $OmbroE/PivotOmbroE/ShoulderECor, $AntebracoE/PivotAntebracoE/ForearmE, $AntebracoE/PivotAntebracoE/ForearmECor, $Armor/PernaD/PivotPernaD/LegD, $Armor/PeD/PivotPeD/FootD, $Armor/CoxaD/PivotCoxaD/ThighD, $Armor/PernaE/PivotPernaE/LegECor, $Armor/PeE/PivotPeE/FootE, $Armor/CoxaE/PivotCoxaE/ThighE, $Armor/MaoD/PivotMaoD/HandD, $Armor/OmbroD/PivotOmbroD/ShoulderD, $Armor/AntebracoD/PivotAntebracoD/ForearmD, $Armor/Tronco/PivotArmadura/ArmaduraCor, $MaoE/PivotMaoE/HandE, $OmbroE/PivotOmbroE/ShoulderE, $Armor/Capa/PivotCapa/Cap, $Armor/Capa/PivotCapa/CapCor,]
+	arma = $MaoE/PivotArma/arma
+	face = $Cabeca/PivotFace/face
+	partes_capacete = [$Rabo/PivotRabo/Rab, $Rabo/PivotRabo/RabCor, $Cabeca/PivotCabelo/Hair, $Cabeca/PivotChapeu/Hat, $Cabeca/PivotChapeu/HatCor]
+	set_id_armadura(id_armadura)
+	set_id_arma(id_arma)
+	set_id_capacete(id_capacete)
+	set_id_face(id_face)
+	pronto = true
+
+func _update_armadura_cor():
+	for p in armadura_cor:
+		p.modulate = Body
+
+func _update_cabelo_cor():
+	for p in cabelo_cor:
+		p.modulate = Hair
+		
+
+func _update_pele_cor():
+	for p in pele_cor:
+		p.self_modulate = skin
+
+func set_skinColor(new_color):
+	_update_pele_cor()
+
+func set_BodyColor(new_color):
+	_update_armadura_cor()
+
+func set_HairColor(new_color):
+	_update_cabelo_cor()
+	
+
+func _update_chapeu_cor():
+	for p in chapeu_cor:
+		p.modulate = Hat
+
+func set_HatColor(new_color):
+	_update_chapeu_cor()
+
+
+
+func pegar_filhos(no_inicial:Node, filhos_encontrados:Array, nomes_excluir:Array):
+	if !(no_inicial.name in nomes_excluir):
+		filhos_encontrados.append(no_inicial)	
+		var filhos_no_inic = no_inicial.get_children()
+		if filhos_no_inic.size() > 0:
+			for f in filhos_no_inic:
+				pegar_filhos(f, filhos_encontrados, nomes_excluir)
+
+func carregar_e_colocar(valor, caminho_res, nodes, tipo_item):
+	var tipos = [\"id_capacetes\", \"Armaduras\", \"face\"]
+	if ResourceLoader.exists(caminho_res):
+		var res_equip = ResourceLoader.load(caminho_res)
+		if res_equip.texturas.size() == 0:
+			print(\"Texturas ainda não foram postas em \" + caminho_res)
+			return
+		
+		for i in nodes.size():
+			var p = nodes[i]
+			
+			if res_equip.z_indexes.size() > 0:
+				p.z_index = res_equip.z_indexes[i]
+			
+			if res_equip.texturas[i]:
+				var caminho_textura = \"res://src/Assets/Player/\" + p.name + \"/\" + res_equip.texturas[i] + \".png\"
+				
+				if ResourceLoader.exists(caminho_textura):
+					p.texture = load(caminho_textura)
+					
+				else:
+					print(caminho_textura, \" não encontrado! \")
+					p.texture = null
+			else:
+				p.texture = null
+
+func set_id_armadura(valor):
+	if pronto && is_inside_tree():
+		var caminho_res = \"res://src/dadosRes/ArmaduraRes/\" + str(valor) + \".res\"
+		carregar_e_colocar(valor, caminho_res, partes_armadura, 1)
+
+func set_id_capacete(valor):
+	if pronto && is_inside_tree():
+		var caminho_res = \"res://src/dadosRes/CapaceteRes/\" + str(valor) + \".res\"
+		carregar_e_colocar(valor, caminho_res, partes_capacete, 1)
+
+func set_id_face(valor):
+	if pronto && is_inside_tree():
+		var caminho_res = \"res://src/dadosRes/FaceRes/\" + str(valor) + \".res\"
+		if ResourceLoader.exists(caminho_res):
+			var res_equip = ResourceLoader.load(\"res://src/dadosRes/FaceRes/\" + str(valor) + \".res\")
+			
+			if res_equip.textura:
+				var caminho_textura = \"res://src/Assets/Player/Faces/\" + res_equip.textura + \".png\"
+				if ResourceLoader.exists(caminho_textura):
+					face.texture = load(caminho_textura)
+					face.z_index = res_equip.z_index
+					face.transform = res_equip.transform
+					face.offset = res_equip.offset
+				else:
+					print(caminho_textura, \" não encontrado!\")
+					face.texture = null
+			else:
+				face.texture = null
+		else:
+			print(caminho_res, \" não encontrado!\")
+
+func set_id_arma(valor):
+	if pronto && is_inside_tree():
+		var caminho_res = \"res://src/dadosRes/ArmaRes/\" + str(valor) + \".res\"
+		if ResourceLoader.exists(caminho_res):
+			var res_equip = ResourceLoader.load(\"res://src/dadosRes/ArmaRes/\" + str(valor) + \".res\")
+			
+			if res_equip.textura:
+				var caminho_textura = \"res://src/Assets/Weapons/\" + res_equip.textura + \".png\"
+				
+				if ResourceLoader.exists(caminho_textura):
+					arma.texture = load(caminho_textura)
+					arma.z_index = res_equip.z_index
+					arma.transform = res_equip.transform
+					arma.offset = res_equip.offset
+				else:
+					print(caminho_textura, \" não encontrado!\")
+					arma.texture = null
+			else:
+				arma.texture = null
+		else:
+			print(caminho_res, \" não encontrado!\")
+"
+
+[sub_resource type="Animation" id="Animation_m1qrg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rabo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(126, -223.665)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rabo:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cabeca:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(46, -258)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cabeca:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmbroE:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(78, -191.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OmbroE:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MaoE:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(85, -120)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MaoE:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AntebracoE:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(89, -155)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AntebracoE:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Armor/Capa:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, -121)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Armor/Capa:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Armor/PernaD:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(23, -66)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armor/PernaD:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armor/PeD:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, -29)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Armor/PeD:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Armor/MaoD:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, -121)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Armor/MaoD:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Armor/OmbroD:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, -179)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Armor/OmbroD:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Armor/AntebracoD:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -150)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Armor/AntebracoD:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Armor/CoxaD:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, -110)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Armor/CoxaD:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Armor/PernaE:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, -41)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Armor/PernaE:rotation")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Armor/PeE:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(62, 7)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Armor/PeE:rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Armor/CoxaE:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(45, -98)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Armor/CoxaE:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Armor/Tronco:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38, -168)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Armor/Tronco:rotation")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ffihl"]
+_data = {
+"Ataque1": ExtResource("17_yitnd"),
+"Ataque2": ExtResource("19_6d1wa"),
+"RESET": SubResource("Animation_m1qrg")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w554f"]
+animation = &"Ataque2"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_sq8qe"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_w2b2x"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_w554f")
+nodes/Animation/position = Vector2(600, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_sq8qe")
+nodes/TimeScale/position = Vector2(780, 60)
+nodes/output/position = Vector2(940, 100)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_apj0r"]
+states/Ataque1/node = SubResource("AnimationNodeBlendTree_w2b2x")
+states/Ataque1/position = Vector2(553, 107)
+states/End/position = Vector2(788, 107)
+states/Start/position = Vector2(361, 107)
+
+[node name="PlayerBatalha" type="Node2D"]
+scale = Vector2(-0.5, 0.5)
+
+[node name="Visual" type="Node2D" parent="."]
+position = Vector2(-19, -4)
+script = SubResource("GDScript_j372h")
+
+[node name="Rabo" type="Sprite2D" parent="Visual"]
+position = Vector2(126, -223.665)
+texture = ExtResource("1_4m3af")
+
+[node name="PivotRabo" type="Sprite2D" parent="Visual/Rabo"]
+
+[node name="Rab" type="Sprite2D" parent="Visual/Rabo/PivotRabo"]
+position = Vector2(-46.684, 33.872)
+
+[node name="RabCor" type="Sprite2D" parent="Visual/Rabo/PivotRabo"]
+position = Vector2(-34.684, 29.931)
+
+[node name="Armor" type="Sprite2D" parent="Visual"]
+
+[node name="Capa" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(32, -121)
+texture = ExtResource("2_73r7d")
+
+[node name="PivotCapa" type="Sprite2D" parent="Visual/Armor/Capa"]
+
+[node name="Cap" type="Sprite2D" parent="Visual/Armor/Capa/PivotCapa"]
+position = Vector2(7.68, 17.323)
+
+[node name="CapCor" type="Sprite2D" parent="Visual/Armor/Capa/PivotCapa"]
+position = Vector2(51.697, -29.779)
+
+[node name="PernaD" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(23, -66)
+texture = ExtResource("3_daxhi")
+
+[node name="PivotPernaD" type="Sprite2D" parent="Visual/Armor/PernaD"]
+
+[node name="LegD" type="Sprite2D" parent="Visual/Armor/PernaD/PivotPernaD"]
+position = Vector2(3.483, 3.504)
+
+[node name="LegDCor" type="Sprite2D" parent="Visual/Armor/PernaD/PivotPernaD"]
+position = Vector2(-0.204, -1.174)
+
+[node name="PeD" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(11, -29)
+texture = ExtResource("4_hum0p")
+
+[node name="PivotPeD" type="Sprite2D" parent="Visual/Armor/PeD"]
+
+[node name="FootD" type="Sprite2D" parent="Visual/Armor/PeD/PivotPeD"]
+position = Vector2(-5.712, -7.551)
+
+[node name="FootDCor" type="Sprite2D" parent="Visual/Armor/PeD/PivotPeD"]
+position = Vector2(0.626, -4.505)
+
+[node name="MaoD" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(-13, -121)
+texture = ExtResource("5_15vqg")
+
+[node name="PivotMaoD" type="Sprite2D" parent="Visual/Armor/MaoD"]
+
+[node name="HandD" type="Sprite2D" parent="Visual/Armor/MaoD/PivotMaoD"]
+position = Vector2(4.202, 18.004)
+
+[node name="HandDCor" type="Sprite2D" parent="Visual/Armor/MaoD/PivotMaoD"]
+position = Vector2(-2, 0)
+
+[node name="OmbroD" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(11, -179)
+texture = ExtResource("6_di3de")
+
+[node name="PivotOmbroD" type="Sprite2D" parent="Visual/Armor/OmbroD"]
+
+[node name="ShoulderD" type="Sprite2D" parent="Visual/Armor/OmbroD/PivotOmbroD"]
+position = Vector2(-4.4844, -12.996)
+
+[node name="ShoulderDCor" type="Sprite2D" parent="Visual/Armor/OmbroD/PivotOmbroD"]
+position = Vector2(-2.728, 7.898)
+
+[node name="AntebracoD" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(-3, -150)
+texture = ExtResource("7_5g1oy")
+
+[node name="PivotAntebracoD" type="Sprite2D" parent="Visual/Armor/AntebracoD"]
+
+[node name="ForearmD" type="Sprite2D" parent="Visual/Armor/AntebracoD/PivotAntebracoD"]
+position = Vector2(0.122, 30.004)
+
+[node name="ForearmDCor" type="Sprite2D" parent="Visual/Armor/AntebracoD/PivotAntebracoD"]
+position = Vector2(2.737, -9.426)
+
+[node name="CoxaD" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(15, -110)
+texture = ExtResource("8_d1wwg")
+
+[node name="PivotCoxaD" type="Sprite2D" parent="Visual/Armor/CoxaD"]
+
+[node name="ThighD" type="Sprite2D" parent="Visual/Armor/CoxaD/PivotCoxaD"]
+position = Vector2(-2.7068, 4.67)
+
+[node name="ThighDCor" type="Sprite2D" parent="Visual/Armor/CoxaD/PivotCoxaD"]
+position = Vector2(-1.669, 0.67)
+
+[node name="PernaE" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(60, -41)
+texture = ExtResource("9_13a7l")
+
+[node name="PivotPernaE" type="Sprite2D" parent="Visual/Armor/PernaE"]
+
+[node name="LegE" type="Sprite2D" parent="Visual/Armor/PernaE/PivotPernaE"]
+position = Vector2(4.741, -4.06)
+
+[node name="LegECor" type="Sprite2D" parent="Visual/Armor/PernaE/PivotPernaE"]
+position = Vector2(1.8442, -2.0602)
+
+[node name="PeE" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(62, 7)
+texture = ExtResource("10_dgfn6")
+
+[node name="PivotPeE" type="Sprite2D" parent="Visual/Armor/PeE"]
+
+[node name="FootE" type="Sprite2D" parent="Visual/Armor/PeE/PivotPeE"]
+position = Vector2(1.657, -10.5619)
+
+[node name="FootECor" type="Sprite2D" parent="Visual/Armor/PeE/PivotPeE"]
+position = Vector2(7.657, -0.56187)
+
+[node name="CoxaE" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(45, -98)
+texture = ExtResource("11_tv58c")
+
+[node name="PivotCoxaE" type="Sprite2D" parent="Visual/Armor/CoxaE"]
+
+[node name="ThighE" type="Sprite2D" parent="Visual/Armor/CoxaE/PivotCoxaE"]
+position = Vector2(9.599, 9.251)
+
+[node name="ThighECor" type="Sprite2D" parent="Visual/Armor/CoxaE/PivotCoxaE"]
+position = Vector2(6.257, 2.029)
+
+[node name="Tronco" type="Sprite2D" parent="Visual/Armor"]
+position = Vector2(38, -168)
+texture = ExtResource("12_qfsug")
+
+[node name="PivotArmadura" type="Sprite2D" parent="Visual/Armor/Tronco"]
+
+[node name="Armadura" type="Sprite2D" parent="Visual/Armor/Tronco/PivotArmadura"]
+position = Vector2(10.958, 45)
+
+[node name="ArmaduraCor" type="Sprite2D" parent="Visual/Armor/Tronco/PivotArmadura"]
+position = Vector2(10.751, 42.32)
+
+[node name="cachecol" type="Sprite2D" parent="Visual/Armor/Tronco"]
+position = Vector2(44, -25)
+
+[node name="Cabeca" type="Sprite2D" parent="Visual"]
+position = Vector2(46, -258)
+texture = ExtResource("13_tc5dg")
+
+[node name="PivotFace" type="Sprite2D" parent="Visual/Cabeca"]
+
+[node name="face" type="Sprite2D" parent="Visual/Cabeca/PivotFace"]
+position = Vector2(-13.985, 13.505)
+
+[node name="PivotCabelo" type="Sprite2D" parent="Visual/Cabeca"]
+
+[node name="Hair" type="Sprite2D" parent="Visual/Cabeca/PivotCabelo"]
+position = Vector2(23.95, -3.233)
+
+[node name="PivotChapeu" type="Sprite2D" parent="Visual/Cabeca"]
+
+[node name="Hat" type="Sprite2D" parent="Visual/Cabeca/PivotChapeu"]
+position = Vector2(1.95, -19.233)
+
+[node name="HatCor" type="Sprite2D" parent="Visual/Cabeca/PivotChapeu"]
+position = Vector2(3.95, -5.105)
+
+[node name="OmbroE" type="Sprite2D" parent="Visual"]
+position = Vector2(78, -191.5)
+texture = ExtResource("14_71vnk")
+
+[node name="PivotOmbroE" type="Sprite2D" parent="Visual/OmbroE"]
+
+[node name="ShoulderE" type="Sprite2D" parent="Visual/OmbroE/PivotOmbroE"]
+position = Vector2(16, -6.819)
+
+[node name="ShoulderECor" type="Sprite2D" parent="Visual/OmbroE/PivotOmbroE"]
+position = Vector2(-2.334, 12.432)
+
+[node name="MaoE" type="Sprite2D" parent="Visual"]
+position = Vector2(85, -120)
+texture = ExtResource("15_x0hrn")
+
+[node name="PivotArma" type="Sprite2D" parent="Visual/MaoE"]
+
+[node name="arma" type="Sprite2D" parent="Visual/MaoE/PivotArma"]
+position = Vector2(-74.7874, -3.1024)
+offset = Vector2(80, 24)
+
+[node name="PivotMaoE" type="Sprite2D" parent="Visual/MaoE"]
+visible = false
+
+[node name="HandE" type="Sprite2D" parent="Visual/MaoE/PivotMaoE"]
+position = Vector2(-0.787399, 6.8976)
+
+[node name="HandECor" type="Sprite2D" parent="Visual/MaoE/PivotMaoE"]
+position = Vector2(-0.787399, 2.8976)
+
+[node name="AntebracoE" type="Sprite2D" parent="Visual"]
+position = Vector2(89, -155)
+texture = ExtResource("16_8t8ts")
+
+[node name="PivotAntebracoE" type="Sprite2D" parent="Visual/AntebracoE"]
+
+[node name="ForearmE" type="Sprite2D" parent="Visual/AntebracoE/PivotAntebracoE"]
+position = Vector2(-0.550003, 6)
+
+[node name="ForearmECor" type="Sprite2D" parent="Visual/AntebracoE/PivotAntebracoE"]
+position = Vector2(-2.868, 11.523)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+autoplay = "iidle"
+reset_on_save = false
+speed_scale = 3.4
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_ffihl")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_apj0r")
+anim_player = NodePath("../Visual/AnimationPlayer")
+parameters/Ataque1/TimeScale/scale = 3.4

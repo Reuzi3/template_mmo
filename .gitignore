@@ -1,0 +1,12 @@
+
+# Godot-specific ignores
+
+# Mono-specific ignores
+.mono/
+data_*/
+
+# project ignores
+addons/FileSystemView/views.cfg
+addons/FileSystemView/config.json
+test/
+Project/src/MenuTextures/falltower6.png.import

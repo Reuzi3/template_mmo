@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ViewPlayers</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <h1>Lista de Players</h1>
+    <ul id="ViewPlayers">
+    </ul>
+    <script>
+        function loadRaceDetails(raceName) {
+            window.location.href = `/get_player/${raceName}`;
+        }
+
+        fetch('/get_players')
+            .then(response => response.json())
+            .then(data => {
+                const raceList = document.getElementById('ViewPlayers');
+                data.players.forEach(race => {
+                    console.log(race)
+                    const listItem = document.createElement('li');
+                    const button = document.createElement('button');
+                    button.textContent = race;
+                    button.addEventListener('click', () => loadRaceDetails(race));
+                    listItem.appendChild(button);
+                    raceList.appendChild(listItem);
+                });
+            })
+
+    </script>
+</body>
+</html>

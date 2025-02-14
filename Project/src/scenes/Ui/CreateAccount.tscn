@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkyovakeu6k8f"]
+
+[ext_resource type="Script" path="res://src/Scripts/web/CreateAccount.gd" id="1_hrh6c"]
+[ext_resource type="PackedScene" uid="uid://dngjkc6w2amn2" path="res://src/scenes/Ui/Criarconta.tscn" id="2_xc617"]
+[ext_resource type="PackedScene" uid="uid://fxnvocnqde8j" path="res://src/scenes/CriarPersonagem.tscn" id="3_3gqyu"]
+
+[node name="CreateAccount" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hrh6c")
+
+[node name="Title" type="ColorRect" parent="."]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+
+[node name="CreatePlayer" parent="." instance=ExtResource("3_3gqyu")]
+layout_mode = 1
+
+[node name="createAccount" parent="." instance=ExtResource("2_xc617")]
+layout_mode = 1

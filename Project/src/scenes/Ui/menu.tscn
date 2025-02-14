@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwnykrdxcfb6r"]
+
+[ext_resource type="FontFile" uid="uid://ddh2utdqyymk" path="res://src/fonts/Roboto-Black.ttf" id="4"]
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("4")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Input" type="LineEdit" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -12.0
+offset_right = 100.0
+offset_bottom = 12.0
+placeholder_text = "Insira seu nome."
+
+[node name="Status" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.5
+offset_top = -47.5
+offset_right = 182.5
+offset_bottom = -32.5
+theme_override_fonts/font = SubResource("2")
+text = "Conectando..."

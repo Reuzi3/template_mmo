@@ -1,0 +1,11 @@
+res://src/scenes/maps/MapManager.tscn
+res://src/fonts/Login.tres
+res://src/scenes/Ui/Login.tscn
+res://src/scenes/Ui/bar.tscn
+res://src/Assets/MenuTextures/Animstars/PreWalk.res
+res://src/Assets/MenuTextures/Animstars/Walk.res
+res://src/Assets/MenuTextures/Animstars/Idle.res
+res://src/scenes/Entitys/Visual.tscn
+res://src/scenes/Ui/TitleBar.gd
+res://src/scenes/Entitys/Player&Peer/Heroi.tscn
+res://src/scenes/Entitys/Player&Peer/Peer/peer.tscn

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classes</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <h1>Lista de Classes</h1>
+    <ul id="raceList">
+    </ul>
+    <script>
+        function loadRaceDetails(raceName) {
+            window.location.href = `/get_race/${raceName}`;
+        }
+
+        fetch('/get_races')
+            .then(response => response.json())
+            .then(data => {
+                const raceList = document.getElementById('raceList');
+                data.raceList.forEach(race => {
+                    const listItem = document.createElement('li');
+                    const button = document.createElement('button');
+                    button.textContent = race;
+                    button.addEventListener('click', () => loadRaceDetails(race));
+                    listItem.appendChild(button);
+                    raceList.appendChild(listItem);
+                });
+            })
+
+    </script>
+</body>
+</html>

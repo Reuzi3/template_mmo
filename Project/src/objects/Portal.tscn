@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://boehxqh27yhhw"]
+
+[ext_resource type="Texture2D" uid="uid://jf81qlqfa8kw" path="res://src/Assets/Map/Portal/Portal2.svg" id="1_pyu2j"]
+[ext_resource type="Texture2D" uid="uid://dvecwft7ch753" path="res://src/Assets/Map/Portal/Light.png" id="2_ae4v5"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(67, 49.75)
+
+[node name="Portal" type="Node2D"]
+
+[node name="Light" type="ColorRect" parent="."]
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 4.0
+offset_bottom = -5.0
+color = Color(1, 0.247059, 0.223529, 0.352941)
+
+[node name="Portal" type="Sprite2D" parent="Light"]
+self_modulate = Color(1, 0.333333, 0.294118, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_pyu2j")
+
+[node name="Light3D" type="Sprite2D" parent="Light/Portal"]
+self_modulate = Color(1, 0.47451, 0.423529, 0.435294)
+position = Vector2(-4, -22)
+rotation = 1.5708
+scale = Vector2(1.35114, 1.06842)
+texture = ExtResource("2_ae4v5")
+region_rect = Rect2(-22.5, -6, 200, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Light"]
+position = Vector2(-2.5, 3.125)
+shape = SubResource("1")
+disabled = true
+debug_color = Color(0, 0.533333, 0.619608, 0.419608)

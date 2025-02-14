@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfmupxjb6j2ih"]
+
+[ext_resource type="Script" path="res://src/Scripts/Entitys/Player/Player.gd" id="1_gcqa7"]
+[ext_resource type="PackedScene" uid="uid://dlu1q6cexru5i" path="res://src/scenes/Entitys/Visual.tscn" id="2_jixy1"]
+[ext_resource type="PackedScene" uid="uid://djiccwm3wcety" path="res://src/scenes/Ui/canvasPlayer.tscn" id="3_k5a28"]
+
+[node name="Heroi" type="Node2D" node_paths=PackedStringArray("nav", "visual", "anim", "PlayerInfo", "ui")]
+z_as_relative = false
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_gcqa7")
+nav = NodePath("NavigationAgent2D")
+visual = NodePath("Flip")
+anim = NodePath("Flip/Visual/AnimationTree")
+PlayerInfo = NodePath("CanvasLayer/PlayerPerfil")
+ui = NodePath("CanvasLayer")
+
+[node name="Flip" parent="." instance=ExtResource("2_jixy1")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+avoidance_enabled = true
+max_speed = 300.0
+debug_enabled = true
+
+[node name="CanvasLayer" parent="." node_paths=PackedStringArray("web") instance=ExtResource("3_k5a28")]
+web = NodePath("..")
+
+[node name="mouse" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_direction = 1
+offset_left = -44.0
+offset_top = -218.0
+offset_right = 32.0
+offset_bottom = -20.0
+pivot_offset = Vector2(50, 50)
+auto_translate = false
+localize_numeral_system = false
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="mouse_entered" from="mouse" to="." method="_on_mouse_mouse_entered"]
+[connection signal="mouse_exited" from="mouse" to="." method="_on_mouse_mouse_exited"]
+
+[editable path="Flip"]
+[editable path="CanvasLayer"]
